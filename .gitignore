@@ -41,4 +41,4 @@ venv/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-deploy/
+deploy/aws-secret.yaml

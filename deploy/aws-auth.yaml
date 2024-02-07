@@ -1,0 +1,20 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::257359299786:role/NodeRole
+      username: system:node:{{EC2PrivateDNSName}}
+    mapUsers: |
+    - userarn: arn:aws:iam::257359299786:user/TerraformUser
+      username: TerraformUser
+      groups:
+        - system:masters
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2024-02-05T12:34:56Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "341007"
+  uid: fbe32c1a-4aa5-4a47-ab8c-a81f79e6cbe3
