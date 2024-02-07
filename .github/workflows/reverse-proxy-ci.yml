@@ -6,21 +6,21 @@
 # https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions
 # https://docs.github.com/en/actions/learn-github-actions/variables
 
-name: Frontend CI
+name: Proxy CI
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'udagram-frontend/*'
-      - '.github/workflows/frontend-ci.yml'
+      - 'udagram-reverseproxy/*'
+      - '.github/workflows/reverse-proxy-ci.yml'
   pull_request:
     branches:
       - main
     paths:
-      - 'udagram-frontend/*'
-      - '.github/workflows/frontend-ci.yml'
+      - 'udagram-reverseproxy/*'
+      - '.github/workflows/reverse-proxy-ci.yml'
 
 jobs:
   build:
@@ -51,7 +51,7 @@ jobs:
     - run: ls -la
 
     - name: Build the Docker image
-      run: docker build ./udagram-frontend -t ${{ vars.DOCKER_USER }}/udagram-frontend:v1
+      run: docker build ./udagram-reverseproxy -t ${{ vars.DOCKER_USER }}/reverseproxy:v1
 
     - name: Push the Docker image
-      run: docker push ${{ vars.DOCKER_USER }}/udagram-frontend:v1
+      run: docker push ${{ vars.DOCKER_USER }}/reverseproxy:v1
